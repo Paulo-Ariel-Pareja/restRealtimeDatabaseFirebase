@@ -1,0 +1,50 @@
+<h3>Producto <small>{{ producto.nombre }}</small></h3>
+  <button [routerLink]="['productos']"
+          class="btn btn-outline-danger">Volver</button>
+  <button type="button" (click)="agregarNuevo(forma)"
+          class="btn btn-outline-success">Nuevo producto</button>
+<hr>
+<div class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form (ngSubmit)="guardar()" #forma=ngForm>
+      <div class="form-group">
+        <label>SKU</label>
+        <input type="text" name="sku"
+                [(ngModel)]="producto.sku"
+                class="form-control"
+                placeholder="SKU del articulo"
+                required>
+      </div>
+
+      <div class="form-group">
+        <label>NOMBRE</label>
+        <input type="text" name="nombre"
+                [(ngModel)]="producto.nombre"
+                class="form-control"
+                placeholder="Nombre del articulo"
+                required>
+      </div>
+
+      <div class="form-group">
+        <label>MONEDA</label>
+        <select [(ngModel)]="producto.moneda" class="form-control" name="moneda">
+          <option value="ars">ARS</option>
+          <option value="usd">USD</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>PRECIO</label>
+        <input type="text" name="precio"
+                [(ngModel)]="producto.precio"
+                class="form-control"
+                placeholder="123456"
+                required>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
